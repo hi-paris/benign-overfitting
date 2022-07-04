@@ -23,8 +23,9 @@ $$ \mathbf {f(x,w)} \approx\ \mathbf{f(x,w_0)}- \mathbf{\nabla_w f(x,w_0)}^T \ma
 $$ \mathbf{\hat{f}(x,w)} \approx\ \mathbf{f(x,w_0)}-   \langle {\mathbf{\nabla_w f(x,w_0)}^T,\mathbf{w_0}} \rangle  + \langle {\mathbf{\nabla_w f(x,w_0)}^T,\mathbf{\hat{w}}} \rangle$$
 
  
-$$ \text{since } \mathbf{\hat{w}}=\mathbf {A^T(AA^T)^{-1} y}  \\
- \mathbf{\hat{f}(x,w)} \approx\ \langle {\mathbf{\nabla_w f(x,w_0)}^T,\mathbf{\mathbf {A^T(AA^T)^{-1} y}}} \rangle + c, \text{with } \mathbf{c}=\mathbf{f(x,w_0)}-   \langle {\mathbf{\nabla_w f(x,w_0)}^T,\mathbf{\hat{w_0}}} \rangle \text{ and } \mathbf{A=(\varphi(X_1)^T .. \varphi(X_1)^T) }$$
+$$ \text{since } \mathbf{\hat{w}}=\mathbf {A^T(AA^T)^{-1} y}$$
+
+$$ \mathbf{\hat{f}(x,w)} \approx\ \langle {\mathbf{\nabla_w f(x,w_0)}^T,\mathbf{\mathbf {A^T(AA^T)^{-1} y}}} \rangle + c, \text{with } \mathbf{c}=\mathbf{f(x,w_0)}-   \langle {\mathbf{\nabla_w f(x,w_0)}^T,\mathbf{\hat{w_0}}} \rangle \text{ and } \mathbf{A=(\varphi(X_1)^T .. \varphi(X_1)^T) }$$
 
 
 $$ \boxed{ \mathbf{\hat{f}(x,w)} \approx\ \langle {\mathbf{\varphi(x),\mathbf {A^T(AA^T)^{-1} y}}} \rangle = \mathbf [K(X_1,x)|... K(X_N,x)] \hat{K_N^{-1}}y +c} 
