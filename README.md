@@ -8,7 +8,7 @@ Double descent is a phenomenon where performance first improves, then gets worse
 
 here is an example of a double descent phenomenon obtained from [this paper](https://arxiv.org/pdf/1912.02292.pdf) :
 
-<img src="experiments/double_descent.png" width="425"/> 
+<img src="experiments/double_descent.PNG" width="425"/> 
 
 
 ## NTK Linear approximation
