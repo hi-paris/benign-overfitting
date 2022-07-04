@@ -28,7 +28,6 @@ $$ \text{since } \mathbf{\hat{w}}=\mathbf {A^T(AA^T)^{-1} y}  \\
 
 
 $$ \boxed{ \mathbf{\hat{f}(x,w)} \approx\ \langle {\mathbf{\varphi(x),\mathbf {A^T(AA^T)^{-1} y}}} \rangle = \mathbf [K(X_1,x)|... K(X_N,x)] \hat{K_N^{-1}}y +c} \\
-
 \text{with } K_N = \mathbf{(K(X_i,X_j))_{1 \leqslant i,j \leqslant N}} \text{      and   } \mathbf{\varphi(x)=\nabla_w f(x,w_0)} $$
 
 
