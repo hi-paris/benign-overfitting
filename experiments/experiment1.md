@@ -1,7 +1,7 @@
 
 # Train and Test errors
 
-Noisy image             |  Denoised image
+0% label noise              |  20% label noise
 :----------------------:|:-------------------------:
 <img src="images/experiment1/traintest_ 0noise.png" width="425"/> | <img src="images/experiment1/traintest_20noise.png" width="425"/> 
 
