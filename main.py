@@ -15,19 +15,20 @@ from utils import *
 import json
 from sklearn.model_selection import train_test_split
 import matplotlib.pyplot as plt
+from scipy.io.arff import loadarff
 
 parser = argparse.ArgumentParser(description='')
 # 1279
 # "cuda:0" if torch.cuda.is_available() else
-parser.add_argument('--input_size', dest='input_size', type=int,default=9, help='')
+parser.add_argument('--input_size', dest='input_size', type=int,default=11, help='')
 parser.add_argument('--output_size', dest='output_size', type=int, default=1, help='')
 
-parser.add_argument('--epochs', dest='epochs', type=int, default=1500, help='# of epoch')
+parser.add_argument('--epochs', dest='epochs', type=int, default=1000, help='# of epoch')
 
 parser.add_argument('--start_size', dest='start_size', type=int, default=1, help='')
 parser.add_argument('--max_size', dest='max_size', type=int, default=1600, help='maximum incremental size')
 parser.add_argument('--noise_percentage', dest='noise_percentage', type=int, default=0, help='')
-parser.add_argument('--nb_trials', dest='nb_trials', type=int, default=6, help='')
+parser.add_argument('--nb_trials', dest='nb_trials', type=int, default=4, help='')
 
 parser.add_argument('--device', dest='device', type=str, default=torch.device("cuda:0" if torch.cuda.is_available() else "cpu"), help='device')
 
@@ -37,7 +38,7 @@ parser.add_argument('--model_name', dest='model_name', type=str, default="nn", h
 parser.add_argument('--optim_name', dest='optim_name', type=str, default="adam", help='')
 parser.add_argument('--loss_name', dest='loss_name', type=str, default="mse", help='')
 
-parser.add_argument('--dataset_name', dest='dataset_name', type=str, default="auto-mpg_2layers_n1", help='')
+parser.add_argument('--dataset_name', dest='dataset_name', type=str, default="BNG_wine_quality", help='')
 
 parser.add_argument('--save_dir', dest='save_dir', type=str, default="/content/drive/MyDrive/bening-overfitting/saved_results", help='device')
 
@@ -66,21 +67,25 @@ if __name__ == '__main__':
 
   ############################ DATA ##########################################
 
-  url = 'http://archive.ics.uci.edu/ml/machine-learning-databases/auto-mpg/auto-mpg.data'
-  column_names = ['MPG', 'Cylinders', 'Displacement', 'Horsepower', 'Weight',
-                  'Acceleration', 'Model Year', 'Origin']
+  # url = 'http://archive.ics.uci.edu/ml/machine-learning-databases/auto-mpg/auto-mpg.data'
+  # column_names = ['MPG', 'Cylinders', 'Displacement', 'Horsepower', 'Weight',
+  #                 'Acceleration', 'Model Year', 'Origin']
 
-  raw_dataset = pd.read_csv(url, names=column_names,
-                            na_values='?', comment='\t',
-                            sep=' ', skipinitialspace=True) 
+  # raw_dataset = pd.read_csv(url, names=column_names,
+  #                           na_values='?', comment='\t',
+  #                           sep=' ', skipinitialspace=True) 
+
+  data = loadarff('C:/Users/ykemiche/OneDrive - Capgemini/Desktop/Hi_Paris/benign-overfitting/data/BNG_wine_quality.arff')
+  raw_dataset = pd.DataFrame(data[0])
+
   dataset = raw_dataset.copy()
   dataset = dataset.dropna()
-  dataset['Origin'] = dataset['Origin'].map({1: 'USA', 2: 'Europe', 3: 'Japan'})
-  dataset = pd.get_dummies(dataset, columns=['Origin'], prefix='', prefix_sep='')
-  dataset.iloc[:,:7]=(dataset.iloc[:,:7]-dataset.iloc[:,:7].mean())/dataset.iloc[:,:7].std()
+  # dataset['Origin'] = dataset['Origin'].map({1: 'USA', 2: 'Europe', 3: 'Japan'})
+  # dataset = pd.get_dummies(dataset, columns=['Origin'], prefix='', prefix_sep='')
+  dataset.iloc[:,:11]=(dataset.iloc[:,:11]-dataset.iloc[:,:11].mean())/dataset.iloc[:,:11].std()
 
   train_features = dataset.copy()
-  train_labels = train_features.pop('MPG')
+  train_labels = train_features.pop('quality')
 
   X_train, X_test, y_train, y_test = train_test_split(train_features, train_labels)
 
