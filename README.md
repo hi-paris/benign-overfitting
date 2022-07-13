@@ -8,7 +8,7 @@ Double descent is a phenomenon where performance first improves, then gets worse
 
 here is an example of a double descent phenomenon obtained from [this paper](https://arxiv.org/pdf/1912.02292.pdf) :
 
-<img src="experiments/double_descent.png" width="425"/> 
+<img src="experiments/double_descent.PNG" width="425"/> 
 
 
 ## NTK Linear approximation
@@ -23,13 +23,13 @@ $$ \mathbf {f(x,w)} \approx\ \mathbf{f(x,w_0)}- \mathbf{\nabla_w f(x,w_0)}^T \ma
 $$ \mathbf{\hat{f}(x,w)} \approx\ \mathbf{f(x,w_0)}-   \langle {\mathbf{\nabla_w f(x,w_0)}^T,\mathbf{w_0}} \rangle  + \langle {\mathbf{\nabla_w f(x,w_0)}^T,\mathbf{\hat{w}}} \rangle$$
 
  
-$$ \text{since } \mathbf{\hat{w}}=\mathbf {A^T(AA^T)^{-1} y}  \\
- \mathbf{\hat{f}(x,w)} \approx\ \langle {\mathbf{\nabla_w f(x,w_0)}^T,\mathbf{\mathbf {A^T(AA^T)^{-1} y}}} \rangle + c, \text{with } \mathbf{c}=\mathbf{f(x,w_0)}-   \langle {\mathbf{\nabla_w f(x,w_0)}^T,\mathbf{\hat{w_0}}} \rangle \text{ and } \mathbf{A=(\varphi(X_1)^T .. \varphi(X_1)^T) }$$
+$$ \text{since } \mathbf{\hat{w}}=\mathbf {A^T(AA^T)^{-1} y}$$
+
+$$ \mathbf{\hat{f}(x,w)} \approx\ \langle {\mathbf{\nabla_w f(x,w_0)}^T,\mathbf{\mathbf {A^T(AA^T)^{-1} y}}} \rangle + c, \text{with } \mathbf{c}=\mathbf{f(x,w_0)}-   \langle {\mathbf{\nabla_w f(x,w_0)}^T,\mathbf{w_0}} \rangle \text{ and } \mathbf{A=(\varphi(X_1)^T .. \varphi(X_1)^T) }$$
 
 
-$$ \boxed{ \mathbf{\hat{f}(x,w)} \approx\ \langle {\mathbf{\varphi(x),\mathbf {A^T(AA^T)^{-1} y}}} \rangle = \mathbf [K(X_1,x)|... K(X_N,x)] \hat{K_N^{-1}}y +c} \\
-
-\text{with } K_N = \mathbf{(K(X_i,X_j))_{1 \leqslant i,j \leqslant N}} \text{      and   } \mathbf{\varphi(x)=\nabla_w f(x,w_0)} $$
+$$ \boxed{ \mathbf{\hat{f}(x,w)} \approx\ \langle {\mathbf{\varphi(x),\mathbf {A^T(AA^T)^{-1} y}}} \rangle = \mathbf [K(X_1,x)|... K(X_N,x)] \hat{K_N}^{-1}y +c} 
+\text{,  with } \hat{K_N} = \mathbf{(K(X_i,X_j))_{1 \leqslant i,j \leqslant N}} \text{, and   } \mathbf{\varphi(x)=\nabla_w f(x,w_0)} $$
 
 
 ## Full List of Experiments (the Data in the links)
